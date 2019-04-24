@@ -4,8 +4,9 @@
     [Fname] NVARCHAR(50) NOT NULL, 
     [Lname] NVARCHAR(50) NOT NULL, 
 	[FullName] AS CONCAT(Fname, ' ', Lname),
-    [CreditLimit] MONEY NULL CHECK (CreditLimit > 0), 
-    [Balance] MONEY NULL CHECK (Balance > CreditLimit),
+    [CreditLimit] MONEY NULL CONSTRAINT CHECKLIMIT CHECK (CreditLimit > 0), 
+    [Balance] MONEY NULL CONSTRAINT CHECKBALANCE CHECK (Balance > CreditLimit),
+
 	
 
 )
